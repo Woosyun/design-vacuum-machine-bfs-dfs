@@ -65,34 +65,14 @@ class VacuumCleaner:
         pygame.display.flip()  # Update display
         pygame.time.delay(1000) # Slow down the movement for visualization
         
-        # TODO 
-        # You only need to fill out actuator_BFS part.
-        # You don't need to use other libraries because every library you need is already implemented.
-        # Check your anaconda env before you launch this program.
-        # Use OrderedDict() to store visited location.
-        
-        # For each iteration, you should update screen.
-        # You must use below code snippet for EVERY ITERATION to successfully implement Coding Assignment.
-        '''
-            screen.fill(black)
-            draw_grid_and_vacuum()
-            pygame.display.flip()
-            pygame.time.delay(500)
-        '''
-        
-        # Also, You need to print out Current Vacuum Position, Whether you sucked dirt, etc. Below is code snippet related to them.
-        '''
-            print(f"Current Vacuum Position: {self.position_to_label({current Position of Vacuum})}")
-        '''
-        '''
-            print(f"Sucked dirt at: {self.position_to_label({current Position of Vacuum})}")
-        '''
-        
         # Write your code below here
+
+        #check whether possible new postion would be in grids
         def boundary_check(position):
             if position[0]>=0 and position[0]<grid_height and position[1]>=0 and position[1]<grid_width:
                 return True
             return False
+        # find new positions
         def actions():
             directions = [(-1, 0), (0, 1), (1, 0), (0, -1)]
             re = []
