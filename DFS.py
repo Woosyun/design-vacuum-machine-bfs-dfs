@@ -106,7 +106,7 @@ class VacuumCleaner:
         frontier = deque()
         frontier.append (self.location_sensor())
         while running:
-            self._position = frontier.popleft()
+            self._position = frontier.pop()
             self.visited[self.location_sensor()]=len(self.visited)
 
             print(f"Current Vacuum Position: {self.position_to_label(self.location_sensor())}")
