@@ -89,14 +89,44 @@ class VacuumCleaner:
         '''
         
         # Write your code below here
+        def is_goal():
+            if len(dirt_positions) == 0:
+                return True
+            else:
+                return False
+        def boundary_check(position):
+            if position[0]>=0 and position[0]<grid_height and position[1]>=0 and position[1]<grid_width:
+                return True
+            return False
+        def actions():
+            directions = [(-1, 0), (0, 1), (1, 0), (0, -1)]
+            re = []
+            for direction in directions:
+                new_position = (self.location_sensor()[0]+direction[0], self.location_sensor()[1]+direction[1])
+                if boundary_check(new_position):
+                    re.append(new_position)
+            return re
+        
         running = True
+        frontier = deque()
         while running:
+            print(f"Current Vacuum Position: {self.position_to_label(self.location_sensor())}")
+            
+            # select actions
+            new_positions = actions()
+            for new_position in new_positions:
+                if new_position not in cleaned_positions and new_position not in frontier:
+                    frontier.append(new_position)
+        
+            # add current position to cleaned_position
+            self.visited
+
+            # change position
+
             screen.fill(black)
             draw_grid_and_vacuum()
             pygame.display.flip()
             pygame.time.delay(500)
-            print(f"Current Vacuum Position: {self.position_to_label(self._position)}")
-        
         
         # Write your code above here.
 
